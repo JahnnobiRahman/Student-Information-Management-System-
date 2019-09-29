@@ -1,0 +1,305 @@
+
+  <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load staticfiles %}
+  <title>RUET Student Database &mdash; Website by Jahnnobi Rahman</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+
+  <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+  <link rel="stylesheet" href="{%static 'fonts/icomoon/style.css' %}">
+
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+
+  <link rel="stylesheet" href="{% static 'css/jquery.fancybox.min.css' %}">
+
+  <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+
+  <link rel="stylesheet" href="{% static 'fonts/flaticon/font/flaticon.css' %}">
+
+  <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+  <link href="{%static 'css/jquery.mb.YTPlayer.min.css'%}" media="all" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="{%static 'css/style.css'%}">
+
+
+
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+
+
+    <div class="py-2 bg-light">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-9 d-none d-lg-block">
+            <a href="#" class="small mr-3"><span class="icon-question-circle-o mr-2"></span> Have a questions?</a> 
+            <a href="#" class="small mr-3"><span class="icon-phone2 mr-2"></span> 10 20 123 456</a> 
+            <a href="#" class="small mr-3"><span class="icon-envelope-o mr-2"></span> info@ruetdomain.com</a> 
+          </div>
+          <div class="col-lg-3 text-right">
+            {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}" class="small mr-3"><span class="icon-unlock-alt"></span> Log Out</a>
+             <form method="POST" action ="{% url 'logout' %}">
+              {% csrf_token %}
+              <input type ="hidden"/>
+            </form>
+            {% else %}
+            <a href="{% url 'login' %}" class="small mr-3"><span class="icon-unlock-alt"></span> Log In</a>
+            <a href="{% url 'register' %}" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span> Register</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+
+      <div class="container">
+        <div class="d-flex align-items-center">
+          <div class="site-logo">
+            <a href="{% url 'home' %}" class="d-block">
+              <img src="{%static 'images/logo.png' %}" height=100 width=100 alt="Image" class="img-fluid">
+            </a>
+          </div>
+          <div class="mr-auto">
+            <nav class="site-navigation position-relative text-right" role="navigation">
+              <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                <li>
+                  <a href="{% url 'home' %}" class="nav-link text-left">Home</a>
+                </li>
+                <li class="has-children active">
+                  <a href="about.html" class="nav-link text-left">About Us</a>
+                  <ul class="dropdown">
+                    <li><a href="teachers.html">Our Teachers</a></li>
+                    <li><a href="about.html">Our School</a></li>
+                  </ul>
+                </li>
+                
+                <li>
+                    <a href="contact.html" class="nav-link text-left">Contact</a>
+                  </li>
+              </ul>                                                                                                                                                                                                                                                                                          </ul>
+            </nav>
+
+          </div>
+          <div class="ml-auto">
+            <div class="social-wrap">
+              <a href="#"><span class="icon-facebook"></span></a>
+              <a href="#"><span class="icon-twitter"></span></a>
+              <a href="#"><span class="icon-linkedin"></span></a>
+
+              <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
+                class="icon-menu h3"></span></a>
+            </div>
+          </div>
+         
+        </div>
+      </div>
+
+    </header>
+
+    
+  
+
+
+    <div class="site-section ftco-subscribe-1 site-blocks-cover pb-4" style="background-image: url('static/images/bg_1.jpg')">
+        <div class="container">
+          <div class="row align-items-end">
+            <div class="col-lg-7">
+              <h2 class="mb-0">About Us</h2>
+              <p>Heaven's Light is Our Guide</p>
+            </div>
+          </div>
+        </div>
+      </div> 
+    
+
+    <div class="custom-breadcrumns border-bottom">
+      <div class="container">
+        <a href="#">Home</a>
+        <span class="mx-3 icon-keyboard_arrow_right"></span>
+        <span class="current">About Us</span>
+      </div>
+    </div>
+
+    <div class="container pt-5 mb-5">
+            <div class="row">
+              <div class="col-lg-4">
+                <h2 class="section-title-underline">
+                  <span>Academics History</span>
+                </h2>
+              </div>
+              <div class="col-lg-4">
+                <p>Rajshahi University of Engineering & Technology, commonly known as RUET (রুয়েট), is one of the leading PhD granting public research universities in Bangladesh. It is one of the most prestigious public universities in the country that specialises in the field of engineering.
+                    RUET was founded in 1964 as Rajshahi Engineering College with a limited number of students. It was then changed to Bangladesh Institute of Technology (BIT) in 1986 and was finally renamed Rajshahi University of Engineering & Technology (RUET) in 2003 when it gained a university status.</p>
+              </div>
+              <div class="col-lg-4">
+                <p> At present, more than 3500 students are pursuing their higher study in this green campus including under-graduate and post-graduate with over 250 prominent faculty members in diverse field of expertise. The medium of instruction and necessary assessment of this university is English.</p>
+              </div>
+            </div>
+          </div> -->
+
+    <div class="site-section">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-6 mb-lg-0 mb-4">
+                    <img src="{% static 'images/course_4.jpg' %}" alt="Image" class="img-fluid"> 
+                </div>
+                <div class="col-lg-5 ml-auto align-self-center">
+                    <h2 class="section-title-underline mb-5">
+                        <span>Why Academics Works</span>
+                    </h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At itaque dolore libero corrupti! Itaque, delectus?</p>
+                    <p>Modi sit dolor repellat esse! Sed necessitatibus itaque libero odit placeat nesciunt, voluptatum totam facere.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                    <div class="col-lg-6 order-1 order-lg-2 mb-4 mb-lg-0">
+                        <img src="{% static 'images/course_5.jpg' %}" alt="Image" class="img-fluid"> 
+                    </div>
+                    <div class="col-lg-5 mr-auto align-self-center order-2 order-lg-1">
+                        <h2 class="section-title-underline mb-5">
+                            <span>Personalized Learning</span>
+                        </h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At itaque dolore libero corrupti! Itaque, delectus?</p>
+                        <p>Modi sit dolor repellat esse! Sed necessitatibus itaque libero odit placeat nesciunt, voluptatum totam facere.</p>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <div class="section-bg style-1" style="background-image: url('static/images/hero_1.jpg');">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+              <span class="icon flaticon-mortarboard"></span>
+              <h3>Our Philosphy</h3>
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis recusandae, iure repellat quis delectus ea? Dolore, amet reprehenderit.</p>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+              <span class="icon flaticon-school-material"></span>
+              <h3>Academics Principle</h3>
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis recusandae, iure repellat quis delectus ea?
+                Dolore, amet reprehenderit.</p>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+              <span class="icon flaticon-library"></span>
+              <h3>Key of Success</h3>
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis recusandae, iure repellat quis delectus ea?
+                Dolore, amet reprehenderit.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+
+
+
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          
+          <div class="col-lg-3">
+            <h3 class="footer-heading"><span>Our Campus</span></h3>
+            <ul class="list-unstyled">
+                <li><a href="#">Acedemic</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Our Leadership</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Human Resources</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3">
+              <h3 class="footer-heading"><span>Our Courses</span></h3>
+              <ul class="list-unstyled">
+                  <li><a href="#">Computer Science & Engineering</a></li>
+                  <li><a href="#">Electrical & Electronics Engineering</a></li>
+                  <li><a href="#">Mechanical Engineering</a></li>
+                  <li><a href="#">Civil Engineering</a></li>
+                 
+              </ul>
+          </div>
+          <div class="col-lg-3">
+              <h3 class="footer-heading"><span>Contact</span></h3>
+              <ul class="list-unstyled">
+                  <li><a href="#">Help Center</a></li>
+                  <li><a href="#">Support Community</a></li>
+                  <li><a href="#">Press</a></li>
+              </ul>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="copyright">
+                <p>
+                   
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This is made with <i class="icon-heart" aria-hidden="true"></i> by <a>Jahnnobi Rahman</a>
+                   
+                    </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+  </div>
+  <!-- .site-wrap -->
+
+  <!-- loader -->
+  <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#51be78"/></svg></div>
+
+  <script src="{%static 'js/jquery-3.3.1.min.js'%}"></script>
+  <script src="{%static 'js/jquery-migrate-3.0.1.min.js'%}"></script>
+  <script src="{%static 'js/jquery-ui.js'%}"></script>
+  <script src="{%static 'js/popper.min.js'%}"></script>
+  <script src="{%static 'js/bootstrap.min.js'%}"></script>
+  <script src="{%static 'js/owl.carousel.min.js'%}"></script>
+  <script src="{%static 'js/jquery.stellar.min.js'%}"></script>
+  <script src="{%static 'js/jquery.countdown.min.js'%}"></script>
+  <script src="{%static 'js/bootstrap-datepicker.min.js'%}"></script>
+  <script src="{%static 'js/jquery.easing.1.3.js'%}"></script>
+  <script src="{%static 'js/aos.js'%}"></script>
+  <script src="{%static 'js/jquery.fancybox.min.js' %}"></script>
+  <script src="{% static 'js/jquery.sticky.js' %}"></script>
+  <script src="{% static 'js/jquery.mb.YTPlayer.min.js' %}"></script>
+
+
+
+
+  <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>
+
+
