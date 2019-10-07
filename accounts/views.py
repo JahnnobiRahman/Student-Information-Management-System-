@@ -38,4 +38,4 @@ def login(request):
 
 def logout(request):
     #re route to home
-    return render(request, 'accounts/login.html')
+    return render(request, 'accounts/register.html')

@@ -63,23 +63,34 @@
             <a href="#" class="small mr-3"><span class="icon-phone2 mr-2"></span> 10 20 123 456</a> 
             <a href="#" class="small mr-3"><span class="icon-envelope-o mr-2"></span> info@ruetdomain.com</a> 
           </div>
+
           <div class="col-lg-3 text-right">
+    
             {% if user.is_authenticated %}
+            <a href="{% url 'create' %}" class="small mr-3"><span class="oi oi-plus"></span> Create</a>
             <a href="{% url 'logout' %}" class="small mr-3"><span class="icon-unlock-alt"></span> Log Out</a>
              <form method="POST" action ="{% url 'logout' %}">
               {% csrf_token %}
               <input type ="hidden"/>
             </form>
             {% else %}
-            <a href="{% url 'login' %}" class="small mr-3"><span class="icon-unlock-alt"></span> Log In</a>
+            <a href="{% url 'login' %}" class="small mr-3"><span class="icon-lock-alt"></span> Log In</a>
             <a href="{% url 'register' %}" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span> Register</a>
             {% endif %}
           </div>
         </div>
       </div>
     </div>
+
+    
     <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
 
+
+        <form method="GET" action="" class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search">
+            <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="search">
+          </form>
+          
       <div class="container">
         <div class="d-flex align-items-center">
           <div class="site-logo">
@@ -142,7 +153,7 @@
 
     <div class="custom-breadcrumns border-bottom">
       <div class="container">
-        <a href="#">Home</a>
+        <a href="{% url 'home' %}">Home</a>
         <span class="mx-3 icon-keyboard_arrow_right"></span>
         <span class="current">About Us</span>
       </div>
@@ -175,8 +186,15 @@
                     <h2 class="section-title-underline mb-5">
                         <span>Why Academics Works</span>
                     </h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At itaque dolore libero corrupti! Itaque, delectus?</p>
-                    <p>Modi sit dolor repellat esse! Sed necessitatibus itaque libero odit placeat nesciunt, voluptatum totam facere.</p>
+          
+                    <ul style="list-style-type:square;">
+                     <li>To create and sustain a dynamic and supportive learning environment and research based educational institute</li>
+                        <li>To discovers, disseminates and applies update knowledge through teaching, learning, research, innovative activities, partnerships and involvement of national and international communities</li>
+                          <li>To deliver national and international voice to develop and take lead role in placing Bangladesh at the global forefront</li>
+                            <li>To undertake research and consultancy services in industrial, educational and society based areas in line with policy implications</li>
+                              <li>To identify regional, national and global needs, areas of specialization on which the university can concentrate</li>
+                                <li>To undertake collaborative projects that offer long term interaction with academia and industry in national and international level</li>
+                    </ul>
                 </div>
             </div>
 
@@ -188,12 +206,21 @@
                         <h2 class="section-title-underline mb-5">
                             <span>Personalized Learning</span>
                         </h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At itaque dolore libero corrupti! Itaque, delectus?</p>
-                        <p>Modi sit dolor repellat esse! Sed necessitatibus itaque libero odit placeat nesciunt, voluptatum totam facere.</p>
+                      <ul style="list-style-type:square;">   
+                    
+                        <li>To be a centre of excellence and regional hub for the technical education, advance research with updated equipment and public services</li>  
+                          <li>To contributes in national and global through excellence in scientific, technical, research and management</li>
+                            <li>To serve as a valuable resource for industry and society</li>
+                              <li> To inspire human spirit through excellent achievements in learning, invention and nationality</li>
+                                <li>To be a centre of excellence for the outreach program with home and abroad and maintain continuity the strength of technical, economical and social advancement</li>   
+                </ul>
                     </div>
                 </div>
         </div>
     </div>
+
+
+
 
     <div class="section-bg style-1" style="background-image: url('static/images/hero_1.jpg');">
         <div class="container">
@@ -201,19 +228,17 @@
             <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
               <span class="icon flaticon-mortarboard"></span>
               <h3>Our Philosphy</h3>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis recusandae, iure repellat quis delectus ea? Dolore, amet reprehenderit.</p>
+              <p>Create and sustain a dynamic and supportive learning environment and research based educational institute</p>
             </div>
             <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
               <span class="icon flaticon-school-material"></span>
               <h3>Academics Principle</h3>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis recusandae, iure repellat quis delectus ea?
-                Dolore, amet reprehenderit.</p>
+              <p>Strengthen the students providing quality teaching and make them able to cope with leadership, teamwork, problem solving, reporting, publishing, presenting, career preparation, ethics and respect to others</p>
             </div>
             <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
               <span class="icon flaticon-library"></span>
               <h3>Key of Success</h3>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis recusandae, iure repellat quis delectus ea?
-                Dolore, amet reprehenderit.</p>
+              <p>Motivate students, research and study outside the country, to take global lead providing quality services and also services for Bangladesh</p>
             </div>
           </div>
         </div>
@@ -221,8 +246,12 @@
       
 
 
+      <div class="container pt-3">
+          {% block content %}
 
-
+          {% endblock %}
+        </div>
+       
     <div class="footer">
       <div class="container">
         <div class="row">

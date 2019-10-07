@@ -2,6 +2,32 @@
 
 {% block content %}
 
-Helllooo!!!!
+
+
+
+
+<div class= "row pt-3">
+        {% for student in students.all %}
+    <div class="col-sm">
+            <div class="col-4 form-group">
+             <img src="{{ student.image.url }}" class="img-fluid"/>
+            </div> 
+            <div class="col-12 form-group">
+                <h4>{{ student.student_num }}</h4>
+            </div> 
+            <div class="col-12 form-group">
+                    <h5>{{ student.roll }}</h5>
+            </div>
+            <div class="col-8 form-group">
+                    <h6>{{ student.dept }}</h6>
+            </div>
+            <div class="col-6 form-group">
+                <p>{{student.address}}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
 
 {% endblock %}

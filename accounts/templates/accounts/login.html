@@ -63,7 +63,7 @@
             <a href="#" class="small mr-3"><span class="icon-envelope-o mr-2"></span> info@ruetdomain.com</a> 
           </div>
           <div class="col-lg-3 text-right">
-            <a href="login.html" class="small mr-3"><span class="icon-unlock-alt"></span> Log In</a>
+            <a href="{% url 'login' %}" class="small mr-3"><span class="icon-unlock-alt"></span> Log In</a>
             <a href="{% url 'register' %}" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span> Register</a>
           </div>
         </div>
@@ -74,7 +74,7 @@
       <div class="container">
         <div class="d-flex align-items-center">
           <div class="site-logo">
-            <a href="index.html" class="d-block">
+            <a href="{% url 'home' %}" class="d-block">
               <img src="{%static 'images/logo.png' %}" height=100 width=100 alt="Image" class="img-fluid">
             </a>
           </div>
@@ -82,7 +82,7 @@
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                 <li>
-                  <a href="index.html" class="nav-link text-left">Home</a>
+                  <a href="{% url 'home' %}" class="nav-link text-left">Home</a>
                 </li>
                 <li class="has-children active">
                   <a href="about.html" class="nav-link text-left">About Us</a>
